@@ -96,7 +96,7 @@ public class CrowdManager : MonoBehaviour
 
     private void SpawnNPCs() {
         foreach (Vector2 position in randomPositions) {
-            GameObject npc = Instantiate(npcPrefab, position, Quaternion.identity, crowdPathImg.transform);
+            GameObject npc = Instantiate(npcPrefab, position, Quaternion.identity, transform);
             npcList.Add(npc);
         }
     }
