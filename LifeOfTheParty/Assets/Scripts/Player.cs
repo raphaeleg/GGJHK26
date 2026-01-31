@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     
     private bool isDashUnlocked = false;
     private bool isBarrierUnlocked = false;
-
+    private bool isRepelUnlocked = false;
     private TrailRenderer trail;
 
     [Header("Dash")]
@@ -23,9 +23,14 @@ public class Player : MonoBehaviour
     bool isDashing;
 
     [Header("Barrier")]
-    [SerializeField] public float barrierDuration = 5.0f;
+    [SerializeField] public float barrierDuration = 3.0f;
     [SerializeField] public float barrierCooldown = 5.0f;
     bool isBarrierActive = false;
+
+    [Header("Repel")]
+    [SerializeField] public float repelDuration = 3.0f;
+    [SerializeField] public float repelCooldown = 5.0f;
+    bool isRepelActive = false;
     
 
     private void Awake()
@@ -51,6 +56,9 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2) && isBarrierUnlocked) {
                 StartCoroutine(BarrierMask());
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3) && isRepelUnlocked) {
+                StartCoroutine(RepelMask());
         }
     }
 
@@ -80,10 +88,6 @@ public class Player : MonoBehaviour
         string collider = other.gameObject.tag;
         switch (collider)
         {
-            case "Guard":
-            Debug.Log("Caught!");
-            break;
-
             case "DashMask":
             isDashUnlocked = true;
             Debug.Log("Unlocked Dash Mask!");
@@ -94,6 +98,13 @@ public class Player : MonoBehaviour
             case "BarrierMask":
             isBarrierUnlocked = true;
             Debug.Log("Unlocked Barrier Mask!");
+
+            Destroy(other.gameObject);
+            break;
+
+            case "RepelMask":
+            isRepelUnlocked = true;
+            Debug.Log("Unlocked Repel Mask!");
 
             Destroy(other.gameObject);
             break;
@@ -123,5 +134,18 @@ public class Player : MonoBehaviour
     public bool GetBarrierActive()
     {
         return isBarrierActive;
+    }
+
+    private IEnumerator RepelMask()
+    {
+        isRepelActive = true;
+        Debug.Log("Repel Active!");
+        yield return new WaitForSeconds(repelDuration);
+        isRepelActive = false;
+    }
+
+    public bool GetRepelActive()
+    {
+        return isRepelActive;
     }
 }
