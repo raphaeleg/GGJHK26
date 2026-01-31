@@ -44,3 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537d18706104cc84e8dc43d59bfe5319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crowdRef: {fileID: 0}
+  npcPrefab: {fileID: 8253492520917676589, guid: 08361249956c00344865668f7329be41, type: 3}
+  npcList: []
+  crowdSize: 200
+  blackAreaRadius: 10
+  npcSpeed: 1
+  npcRepelForce: 1
+  npcAttractForce: 1
+  npcFreezeTime: 1
