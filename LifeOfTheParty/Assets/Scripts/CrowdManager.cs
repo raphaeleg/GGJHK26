@@ -9,7 +9,7 @@ public class CrowdManager : MonoBehaviour
     [SerializeField] private List<GameObject> npcList = new List<GameObject>();
     private List<Vector3> blackAreaPositions = new List<Vector3>();
     private List<Vector3> randomPositions = new List<Vector3>();
-    private int crowdSize = 200;
+    public int crowdSize = 200;
     private int skipEveryNthPixel = 1;
     private float spawnOffsetZ = 0.01f;
 
