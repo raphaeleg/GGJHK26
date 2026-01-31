@@ -16,6 +16,10 @@ public class Player : MonoBehaviour
     private bool isRepelUnlocked = false;
     private TrailRenderer trail;
 
+    public GameManager gameManager;
+    public InventoryManager inventoryManager;
+    public bool isDead;
+
     [Header("Dash")]
     [SerializeField] public float dashSpeed = 10.0f;
     [SerializeField] public float dashDuration = 1.0f;
@@ -37,6 +41,8 @@ public class Player : MonoBehaviour
     {
         trail = GetComponentInChildren<TrailRenderer>();
         trail.enabled = false;
+        gameManager = FindFirstObjectByType<GameManager>();
+        inventoryManager = FindFirstObjectByType<InventoryManager>();
     }
 
     private void Update()
@@ -90,6 +96,7 @@ public class Player : MonoBehaviour
         {
             case "DashMask":
             isDashUnlocked = true;
+            inventoryManager.ShowDashMaskIcon();
             Debug.Log("Unlocked Dash Mask!");
 
             Destroy(other.gameObject);
@@ -97,6 +104,7 @@ public class Player : MonoBehaviour
 
             case "BarrierMask":
             isBarrierUnlocked = true;
+            inventoryManager.ShowBarrierMaskIcon();
             Debug.Log("Unlocked Barrier Mask!");
 
             Destroy(other.gameObject);
@@ -104,6 +112,7 @@ public class Player : MonoBehaviour
 
             case "RepelMask":
             isRepelUnlocked = true;
+            inventoryManager.ShowRepelMaskIcon();
             Debug.Log("Unlocked Repel Mask!");
 
             Destroy(other.gameObject);
@@ -111,6 +120,12 @@ public class Player : MonoBehaviour
 
             case "Hands":
             Debug.Log("Caught!");
+            if (isDead)
+                {
+                    break;
+                }
+            isDead = true;
+            gameManager.GameOver();
             break;
         }
     }
