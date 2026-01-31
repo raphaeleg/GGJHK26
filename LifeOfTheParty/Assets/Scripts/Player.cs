@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.U2D.Animation;
 
 public class Player : MonoBehaviour
 {
@@ -16,10 +15,10 @@ public class Player : MonoBehaviour
     private bool isBarrierUnlocked = false;
     private bool isRepelUnlocked = false;
     private TrailRenderer trail;
-    public Animator animator;
-    public SpriteLibraryAsset[] spriteLibraryAssetArray;
-    public SpriteLibrary spriteLibrary;
-    private int spriteLibraryint;
+
+    public GameManager gameManager;
+    public InventoryManager inventoryManager;
+    public bool isDead;
 
     [Header("Dash")]
     [SerializeField] public float dashSpeed = 10.0f;
@@ -42,7 +41,8 @@ public class Player : MonoBehaviour
     {
         trail = GetComponentInChildren<TrailRenderer>();
         trail.enabled = false;
-        spriteLibrary = GetComponent<SpriteLibrary>();
+        gameManager = FindFirstObjectByType<GameManager>();
+        inventoryManager = FindFirstObjectByType<InventoryManager>();
     }
 
     private void Update()
@@ -54,10 +54,6 @@ public class Player : MonoBehaviour
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
 
         moveDirection = new Vector2(movement.x, movement.y);
         
@@ -100,6 +96,7 @@ public class Player : MonoBehaviour
         {
             case "DashMask":
             isDashUnlocked = true;
+            inventoryManager.ShowDashMaskIcon();
             Debug.Log("Unlocked Dash Mask!");
 
             Destroy(other.gameObject);
@@ -107,6 +104,7 @@ public class Player : MonoBehaviour
 
             case "BarrierMask":
             isBarrierUnlocked = true;
+            inventoryManager.ShowBarrierMaskIcon();
             Debug.Log("Unlocked Barrier Mask!");
 
             Destroy(other.gameObject);
@@ -114,6 +112,7 @@ public class Player : MonoBehaviour
 
             case "RepelMask":
             isRepelUnlocked = true;
+            inventoryManager.ShowRepelMaskIcon();
             Debug.Log("Unlocked Repel Mask!");
 
             Destroy(other.gameObject);
@@ -121,6 +120,12 @@ public class Player : MonoBehaviour
 
             case "Hands":
             Debug.Log("Caught!");
+            if (isDead)
+                {
+                    break;
+                }
+            isDead = true;
+            gameManager.GameOver();
             break;
         }
     }
@@ -130,8 +135,6 @@ public class Player : MonoBehaviour
         isDashing = true;
         trail.enabled = true;
         this.gameObject.layer = LayerMask.NameToLayer("IgnoreNPCs");
-        spriteLibraryint = 1;
-        spriteLibrary.spriteLibraryAsset = spriteLibraryAssetArray[spriteLibraryint];
         rb.velocity = new Vector2(moveDirection.x * dashSpeed, moveDirection.y * dashSpeed);
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
@@ -143,8 +146,6 @@ public class Player : MonoBehaviour
     {
         isBarrierActive = true;
         Debug.Log("Barrier Active!");
-        spriteLibraryint = 2;
-        spriteLibrary.spriteLibraryAsset = spriteLibraryAssetArray[spriteLibraryint];
         yield return new WaitForSeconds(barrierDuration);
         isBarrierActive = false;
     }
@@ -158,8 +159,6 @@ public class Player : MonoBehaviour
     {
         isRepelActive = true;
         Debug.Log("Repel Active!");
-        spriteLibraryint = 3;
-        spriteLibrary.spriteLibraryAsset = spriteLibraryAssetArray[spriteLibraryint];
         yield return new WaitForSeconds(repelDuration);
         isRepelActive = false;
     }
