@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 public class Player : MonoBehaviour
 {
@@ -15,9 +16,15 @@ public class Player : MonoBehaviour
     private bool isBarrierUnlocked = false;
     private bool isRepelUnlocked = false;
     private TrailRenderer trail;
+    public Animator animator;
 
     public GameManager gameManager;
     public InventoryManager inventoryManager;
+
+    public SpriteLibraryAsset[] spriteLibraryAssetArray;
+    public SpriteLibrary spriteLibrary;
+    private int spriteLibraryInt;
+
     public bool isDead;
 
     [Header("Dash")]
@@ -43,6 +50,7 @@ public class Player : MonoBehaviour
         trail.enabled = false;
         gameManager = FindFirstObjectByType<GameManager>();
         inventoryManager = FindFirstObjectByType<InventoryManager>();
+        spriteLibrary = GetComponent<SpriteLibrary>();
     }
 
     private void Update()
@@ -55,15 +63,20 @@ public class Player : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+
         moveDirection = new Vector2(movement.x, movement.y);
         
-        if (Input.GetKeyDown(KeyCode.Alpha1) && isDashUnlocked) {
+        if (Input.GetKeyDown(KeyCode.Space) && isDashUnlocked) {
+            Debug.Log("Space down");
                 StartCoroutine(DashMask());
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2) && isBarrierUnlocked) {
+        if (Input.GetKeyDown(KeyCode.J) && isBarrierUnlocked) {
                 StartCoroutine(BarrierMask());
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3) && isRepelUnlocked) {
+        if (Input.GetKeyDown(KeyCode.K) && isRepelUnlocked) {
                 StartCoroutine(RepelMask());
         }
     }
@@ -135,6 +148,8 @@ public class Player : MonoBehaviour
         isDashing = true;
         trail.enabled = true;
         this.gameObject.layer = LayerMask.NameToLayer("IgnoreNPCs");
+        spriteLibraryInt = 1;
+        spriteLibrary.spriteLibraryAsset = spriteLibraryAssetArray[spriteLibraryInt];
         rb.velocity = new Vector2(moveDirection.x * dashSpeed, moveDirection.y * dashSpeed);
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
@@ -146,6 +161,8 @@ public class Player : MonoBehaviour
     {
         isBarrierActive = true;
         Debug.Log("Barrier Active!");
+        spriteLibraryInt = 2;
+        spriteLibrary.spriteLibraryAsset = spriteLibraryAssetArray[spriteLibraryInt];
         yield return new WaitForSeconds(barrierDuration);
         isBarrierActive = false;
     }
@@ -159,6 +176,8 @@ public class Player : MonoBehaviour
     {
         isRepelActive = true;
         Debug.Log("Repel Active!");
+        spriteLibraryInt = 3;
+        spriteLibrary.spriteLibraryAsset = spriteLibraryAssetArray[spriteLibraryInt];
         yield return new WaitForSeconds(repelDuration);
         isRepelActive = false;
     }
