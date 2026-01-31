@@ -8,6 +8,7 @@ TagManager:
   - DashMask
   - BarrierMask
   - RepelMask
+  - Hands
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - IgnoreNPCs
   - NPC
-  - 
+  - Hands
   - 
   - 
   - 

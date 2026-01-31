@@ -108,6 +108,10 @@ public class Player : MonoBehaviour
 
             Destroy(other.gameObject);
             break;
+
+            case "Hands":
+            Debug.Log("Caught!");
+            break;
         }
     }
 
