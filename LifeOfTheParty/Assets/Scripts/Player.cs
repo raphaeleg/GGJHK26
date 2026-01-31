@@ -64,6 +64,17 @@ public class Player : MonoBehaviour
         rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       string collider = collision.gameObject.tag;
+        switch (collider)
+        {
+            case "Guard":
+            Debug.Log("Caught!");
+            break; 
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         string collider = other.gameObject.tag;
