@@ -284,6 +284,8 @@ MonoBehaviour:
   dashSpeed: 20
   dashDuration: 0.15
   dashCooldown: 5
+  barrierDuration: 5
+  barrierCooldown: 5
 --- !u!61 &119457517
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1396,6 +1398,63 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 496032171}
   m_SourcePrefab: {fileID: 100100000, guid: 60cb3bc768dfcf14ab7efe2e656d3f6e, type: 3}
+--- !u!1001 &7061062429371253647
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6532471502892317529, guid: c1258c62bbacecf4ca54e13746152336, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532471502892317529, guid: c1258c62bbacecf4ca54e13746152336, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532471502892317529, guid: c1258c62bbacecf4ca54e13746152336, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532471502892317529, guid: c1258c62bbacecf4ca54e13746152336, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532471502892317529, guid: c1258c62bbacecf4ca54e13746152336, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532471502892317529, guid: c1258c62bbacecf4ca54e13746152336, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532471502892317529, guid: c1258c62bbacecf4ca54e13746152336, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532471502892317529, guid: c1258c62bbacecf4ca54e13746152336, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532471502892317529, guid: c1258c62bbacecf4ca54e13746152336, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532471502892317529, guid: c1258c62bbacecf4ca54e13746152336, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7946046464481660797, guid: c1258c62bbacecf4ca54e13746152336, type: 3}
+      propertyPath: m_Name
+      value: BarrierMask
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c1258c62bbacecf4ca54e13746152336, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1408,3 +1467,4 @@ SceneRoots:
   - {fileID: 3126307249812728188}
   - {fileID: 554884152}
   - {fileID: 5862462023955663776}
+  - {fileID: 7061062429371253647}

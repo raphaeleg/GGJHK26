@@ -10,7 +10,10 @@ public class Player : MonoBehaviour
 
     private Vector2 movement;
     private Vector2 moveDirection;
+    
     private bool isDashUnlocked = false;
+    private bool isBarrierUnlocked = false;
+
     private TrailRenderer trail;
 
     [Header("Dash")]
@@ -19,16 +22,17 @@ public class Player : MonoBehaviour
     [SerializeField] public float dashCooldown = 5.0f;
     bool isDashing;
 
+    [Header("Barrier")]
+    [SerializeField] public float barrierDuration = 5.0f;
+    [SerializeField] public float barrierCooldown = 5.0f;
+    bool isBarrierActive = false;
+    
+
     private void Awake()
     {
         trail = GetComponentInChildren<TrailRenderer>();
         trail.enabled = false;
     }
-
-    private void Start()
-    {
-
-    } 
 
     private void Update()
     {
@@ -44,6 +48,9 @@ public class Player : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Alpha1) && isDashUnlocked) {
                 StartCoroutine(DashMask());
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2) && isBarrierUnlocked) {
+                StartCoroutine(BarrierMask());
         }
     }
 
@@ -72,6 +79,13 @@ public class Player : MonoBehaviour
 
             Destroy(other.gameObject);
             break;
+
+            case "BarrierMask":
+            isBarrierUnlocked = true;
+            Debug.Log("Unlocked Barrier Mask!");
+
+            Destroy(other.gameObject);
+            break;
         }
     }
 
@@ -85,5 +99,18 @@ public class Player : MonoBehaviour
         isDashing = false;
         trail.enabled = false;
         this.gameObject.layer = LayerMask.NameToLayer("Player");
+    }
+
+    private IEnumerator BarrierMask()
+    {
+        isBarrierActive = true;
+        Debug.Log("Barrier Active!");
+        yield return new WaitForSeconds(barrierDuration);
+        isBarrierActive = false;
+    }
+
+    public bool GetBarrierActive()
+    {
+        return isBarrierActive;
     }
 }

@@ -25,7 +25,6 @@ public class Guard : MonoBehaviour
     private void FixedUpdate()
     {
         UpdateTargetDirection();
-        // RotateTowardsTarget();
         SetVelocity();
     } 
 
@@ -40,18 +39,6 @@ public class Guard : MonoBehaviour
             targetDirection = Vector2.zero;
         }
     }
-
-    // private void RotateTowardsTarget()
-    // {
-    //     if (targetDirection == Vector2.zero)
-    //     {
-    //         return;
-    //     }
-    //     Quaternion targetRotation = Quaternion.LookRotation(transform.forward, targetDirection);
-    //     Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-    //     rb.SetRotation(rotation);
-    // }
 
     private void SetVelocity()
     {

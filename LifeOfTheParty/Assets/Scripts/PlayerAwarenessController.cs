@@ -19,7 +19,7 @@ public class PlayerAwarenessController : MonoBehaviour
 
     private void Awake()
     {
-        player = FindObjectOfType<Player>();
+        player = FindFirstObjectByType<Player>();
     }
 
     private void Update()
