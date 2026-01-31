@@ -79,9 +79,11 @@ public class Player : MonoBehaviour
     {
         isDashing = true;
         trail.enabled = true;
+        this.gameObject.layer = LayerMask.NameToLayer("IgnoreNPCs");
         rb.velocity = new Vector2(moveDirection.x * dashSpeed, moveDirection.y * dashSpeed);
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         trail.enabled = false;
+        this.gameObject.layer = LayerMask.NameToLayer("Player");
     }
 }
