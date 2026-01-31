@@ -10,7 +10,7 @@ public class CrowdManager : MonoBehaviour
     private List<Vector3> blackAreaPositions = new List<Vector3>();
     private List<Vector3> randomPositions = new List<Vector3>();
     public int crowdSize = 200;
-    private int skipEveryNthPixel = 1;
+    public int skipEveryNthPixel = 1;
     private float spawnOffsetZ = 0.01f;
 
     [SerializeField] private Image crowdPathImg;
@@ -44,6 +44,8 @@ public class CrowdManager : MonoBehaviour
         if (w < 4 || h < 4 || skipEveryNthPixel < 1) {
             Debug.LogWarning("Suspicious texture size or skip value");
         }
+
+        Debug.Log(w + " " + h);
 
         blackAreaPositions = new List<Vector3>(10000); 
 

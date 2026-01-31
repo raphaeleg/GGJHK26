@@ -113,8 +113,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4588184291086284033}
-  - {fileID: 3552593627731941299}
   - {fileID: 7800023905772253825}
+  - {fileID: 3552593627731941299}
   - {fileID: 8682562773018682924}
   - {fileID: 1631040916546700881}
   m_Father: {fileID: 0}
@@ -314,6 +314,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcPrefab: {fileID: 8253492520917676589, guid: 08361249956c00344865668f7329be41, type: 3}
   npcList: []
+  crowdSize: 200
+  skipEveryNthPixel: 1
   crowdPathImg: {fileID: 5857523063498093924}
 --- !u!1 &5900072699708274127
 GameObject:

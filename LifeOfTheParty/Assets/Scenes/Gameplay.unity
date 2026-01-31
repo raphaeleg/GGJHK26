@@ -914,9 +914,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameplayEnvironment
       objectReference: {fileID: 0}
+    - target: {fileID: 3552593627731941299, guid: c3501a2e09fa11f43b4285bb84913b59, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552593627731941299, guid: c3501a2e09fa11f43b4285bb84913b59, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 103.0242
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552593627731941299, guid: c3501a2e09fa11f43b4285bb84913b59, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552593627731941299, guid: c3501a2e09fa11f43b4285bb84913b59, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857523063498093924, guid: c3501a2e09fa11f43b4285bb84913b59, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 882b48c718cc7a541bdf9598e236ff38, type: 3}
+    - target: {fileID: 5857523063498093924, guid: c3501a2e09fa11f43b4285bb84913b59, type: 3}
+      propertyPath: m_Color.a
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857523063498093924, guid: c3501a2e09fa11f43b4285bb84913b59, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5900072699708274127, guid: c3501a2e09fa11f43b4285bb84913b59, type: 3}
       propertyPath: m_Name
       value: Crowd_VisualRef
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658774235827477410, guid: c3501a2e09fa11f43b4285bb84913b59, type: 3}
+      propertyPath: crowdSize
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800023905772253825, guid: c3501a2e09fa11f43b4285bb84913b59, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 4.824201
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800023905772253825, guid: c3501a2e09fa11f43b4285bb84913b59, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.4121006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
