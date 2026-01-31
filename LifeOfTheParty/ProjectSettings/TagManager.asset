@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Guard
+  - DashMask
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - IgnoreNPCs
   - 
   - 
   - 
