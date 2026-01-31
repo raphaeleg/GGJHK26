@@ -285,6 +285,11 @@ MonoBehaviour:
   rb: {fileID: 119457518}
   speed: 10
   animator: {fileID: 119457520}
+  spriteLibraryAsset:
+  - {fileID: 7108339969198208228, guid: d961dd0bf6dc61246830fa7cf8552a0d, type: 3}
+  - {fileID: 7108339969198208228, guid: 0cd607f5882cc5a4d8d2604795c15b9b, type: 3}
+  - {fileID: 7108339969198208228, guid: 330cbf25307f9d14aa0adef89167d117, type: 3}
+  - {fileID: 7108339969198208228, guid: 1a46ee2770b9e88459592856ac2c95e3, type: 3}
   dashSpeed: 20
   dashDuration: 0.15
   dashCooldown: 5

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class Player : MonoBehaviour
     private bool isRepelUnlocked = false;
     private TrailRenderer trail;
     public Animator animator;
+    public SpriteLibraryAsset[] spriteLibraryAssetArray;
+    public SpriteLibrary spriteLibrary;
+    private int spriteLibraryint;
 
     [Header("Dash")]
     [SerializeField] public float dashSpeed = 10.0f;
@@ -38,6 +42,7 @@ public class Player : MonoBehaviour
     {
         trail = GetComponentInChildren<TrailRenderer>();
         trail.enabled = false;
+        spriteLibrary = GetComponent<SpriteLibrary>();
     }
 
     private void Update()
@@ -125,6 +130,8 @@ public class Player : MonoBehaviour
         isDashing = true;
         trail.enabled = true;
         this.gameObject.layer = LayerMask.NameToLayer("IgnoreNPCs");
+        spriteLibraryint = 1;
+        spriteLibrary.spriteLibraryAsset = spriteLibraryAssetArray[spriteLibraryint];
         rb.velocity = new Vector2(moveDirection.x * dashSpeed, moveDirection.y * dashSpeed);
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
@@ -136,6 +143,8 @@ public class Player : MonoBehaviour
     {
         isBarrierActive = true;
         Debug.Log("Barrier Active!");
+        spriteLibraryint = 2;
+        spriteLibrary.spriteLibraryAsset = spriteLibraryAssetArray[spriteLibraryint];
         yield return new WaitForSeconds(barrierDuration);
         isBarrierActive = false;
     }
@@ -149,6 +158,8 @@ public class Player : MonoBehaviour
     {
         isRepelActive = true;
         Debug.Log("Repel Active!");
+        spriteLibraryint = 3;
+        spriteLibrary.spriteLibraryAsset = spriteLibraryAssetArray[spriteLibraryint];
         yield return new WaitForSeconds(repelDuration);
         isRepelActive = false;
     }
