@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private bool isBarrierUnlocked = false;
     private bool isRepelUnlocked = false;
     private TrailRenderer trail;
+    public Animator animator;
 
     [Header("Dash")]
     [SerializeField] public float dashSpeed = 10.0f;
@@ -48,6 +49,10 @@ public class Player : MonoBehaviour
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
 
         moveDirection = new Vector2(movement.x, movement.y);
         
