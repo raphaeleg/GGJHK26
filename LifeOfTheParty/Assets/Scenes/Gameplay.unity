@@ -4541,7 +4541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5857523063498093924, guid: c3501a2e09fa11f43b4285bb84913b59, type: 3}
       propertyPath: m_Color.a
-      value: 0.5372549
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5857523063498093924, guid: c3501a2e09fa11f43b4285bb84913b59, type: 3}
       propertyPath: m_PreserveAspect
