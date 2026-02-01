@@ -316,6 +316,10 @@ MonoBehaviour:
   npcList: []
   crowdSize: 200
   skipEveryNthPixel: 1
+  NPCSpriteOptions:
+  - {fileID: 21300000, guid: d123ff20fdab945478f1c8c453ff4321, type: 3}
+  - {fileID: 21300000, guid: 4dc48a135f2a40145bc3a88dc08bd72a, type: 3}
+  - {fileID: 21300000, guid: 487b4fa620b99a34cab4b22d41d7f9f0, type: 3}
   crowdPathImg: {fileID: 5857523063498093924}
 --- !u!1 &5900072699708274127
 GameObject:

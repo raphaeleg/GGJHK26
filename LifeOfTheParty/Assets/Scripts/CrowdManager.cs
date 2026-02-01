@@ -13,6 +13,8 @@ public class CrowdManager : MonoBehaviour
     public int skipEveryNthPixel = 1;
     private float spawnOffsetZ = 0.01f;
 
+    [SerializeField] private List<Sprite> NPCSpriteOptions;
+
     [SerializeField] private Image crowdPathImg;
     private Texture2D maskTexture;
 
@@ -99,6 +101,7 @@ public class CrowdManager : MonoBehaviour
     private void SpawnNPCs() {
         foreach (Vector2 position in randomPositions) {
             GameObject npc = Instantiate(npcPrefab, position, Quaternion.identity, transform);
+            npc.GetComponent<NPC>().SetSprite(NPCSpriteOptions[Random.Range(0, NPCSpriteOptions.Count)]);
             npcList.Add(npc);
         }
     }

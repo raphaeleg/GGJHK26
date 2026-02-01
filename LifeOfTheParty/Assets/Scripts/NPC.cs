@@ -40,6 +40,11 @@ public class NPC : MonoBehaviour
         }
     } 
 
+    public void SetSprite(Sprite sprite)
+    {
+        GetComponent<SpriteRenderer>().sprite = sprite;
+    }
+
     private void UpdateTargetDirection()
     {
         if (playerAwarenessController.awareOfPlayer)
