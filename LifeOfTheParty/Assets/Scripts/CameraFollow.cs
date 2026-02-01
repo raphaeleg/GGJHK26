@@ -6,11 +6,6 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform playerTarget;
 
-    private void Start()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         Vector3 targetPos = new Vector3(0f, playerTarget.position.y, -10f);
